@@ -1,8 +1,11 @@
 package ejercicio1;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -107,4 +110,21 @@ public class Archivo {
 	        e.printStackTrace();
 	    }
 	}
+	//Ejercicio 3
+		/////////////////////////////////////////
+		public boolean creaArchivo()
+		{
+			FileWriter escritura;
+			try {
+				escritura = new FileWriter(ruta, true);
+				escritura.write("");
+				escritura.close();
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return false;
+				
+		}
+
 }
