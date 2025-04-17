@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+import exceptions.DniInvalido;
 
 public class Archivo {
 	private String ruta;
@@ -46,7 +48,8 @@ public class Archivo {
 	}
 	
 	public void leerArchivoPorLinea() {
-	    try {
+	    
+		try {
 	        BufferedReader lector = new BufferedReader(new FileReader(ruta));
 	        String linea;
 	        while ((linea = lector.readLine()) != null) {
@@ -56,6 +59,36 @@ public class Archivo {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	public TreeSet<Persona> guardarTreeSetPorLinea() {
+	    TreeSet<Persona> treesetPersonas = new TreeSet<>();
+
+	    try (BufferedReader lector = new BufferedReader(new FileReader(ruta))) {
+	        String linea;
+
+	        while ((linea = lector.readLine()) != null) {
+	            String[] datos = linea.split("-");
+	            if (datos.length == 3) {
+	                String nombre = datos[0].trim();
+	                String apellido = datos[1].trim();
+	                String dni = datos[2].trim();
+
+	                try {
+	                    Validador.verificarDniInvalido(dni);
+	                    Persona persona = new Persona(nombre, apellido, dni);
+	                    treesetPersonas.add(persona);
+	                } catch (DniInvalido ex) {
+	                	ex.printStackTrace();
+	                }
+	            }
+	        }
+
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
+
+	    return treesetPersonas;
 	}
 	
 	public void leerSinDuplicados() {
@@ -74,6 +107,4 @@ public class Archivo {
 	        e.printStackTrace();
 	    }
 	}
-
-	
 }

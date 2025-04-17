@@ -2,7 +2,7 @@ package ejercicio1;
 
 import exceptions.DniInvalido;
 
-public class Persona {
+public class Persona implements Comparable<Persona> {
 	
 	private String nombre;
 	private String apellido;
@@ -41,5 +41,43 @@ public class Persona {
 	@Override
 	public String toString() {
 		return "Persona \nNombre: " + nombre + "\nApellido: " + apellido + "\nDni: " + dni + "\n";
-	}	
+	}
+	
+	@Override
+    public int compareTo(Persona otra) {
+        
+		//ORDENAMIENTO por Apellido de A a Z
+		if(this.apellido.compareToIgnoreCase(otra.apellido) > 0)
+		{
+			return 1;
+		}
+		
+		if (this.apellido.compareToIgnoreCase(otra.apellido) < 0)
+		{
+			return -1;	
+		}		
+		
+		return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Persona objPersona;
+		if(obj instanceof Persona)
+		{
+			objPersona = (Persona) obj;
+			if(objPersona.getDni() == this.getDni())
+			{
+				return true;
+			}
+		}
+		return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return dni.hashCode();
+    }
+	
+	
 }

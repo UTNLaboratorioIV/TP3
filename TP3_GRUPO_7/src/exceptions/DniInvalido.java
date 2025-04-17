@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class DniInvalido extends IOException {
     public DniInvalido(String dni) {
-        super(String.format("El DNI %dni contiene caracteres no válidos.",dni ));
+        super(String.format("El DNI %s contiene caracteres no válidos.",dni ));
     }
     
     public DniInvalido() {
