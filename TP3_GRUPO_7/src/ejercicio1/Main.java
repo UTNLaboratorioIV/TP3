@@ -10,7 +10,7 @@ public class Main {
 		//Persona p1 = new Persona();
 		Archivo a1 = new Archivo();
 		
-		a1.setRuta("C:\\Users\\santi\\Downloads\\Personas.txt");
+		a1.setRuta("C:\\Users\\danie\\Downloads\\Personas.txt");
 		if(a1.existe()) {
 			System.out.println("El archivo ya existe!");
 		}else {
@@ -29,6 +29,26 @@ public class Main {
 		for (Persona p : personasOrdenadas) {
 		    System.out.println(p);
 		}
+		
+		//Ejercicio 3
+		////////////////////////////////////////////////////////////////
+		Archivo archivo = new Archivo();
+		archivo.setRuta("C:\\Users\\danie\\Downloads\\Resultado.txt");
+
+		if(archivo.existe())
+			{
+				System.out.println("Existe el archivo");
+			}
+		else
+			{
+				System.out.println("No existe archivo previo, se crea archivo");
+				archivo.creaArchivo();
+			}
+
+		//escribo lineas
+		archivo.escribe_lineas(personasOrdenadas);
+
+		////////////////////////////////////////////////////////////////
 		
 		
 	}
