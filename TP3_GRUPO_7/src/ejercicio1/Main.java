@@ -10,7 +10,7 @@ public class Main {
 		//Persona p1 = new Persona();
 		Archivo a1 = new Archivo();
 		
-		a1.setRuta("C:\\Users\\danie\\Downloads\\Personas.txt");
+		a1.setRuta("src/Personas.txt");
 		if(a1.existe()) {
 			System.out.println("El archivo ya existe!");
 		}else {
@@ -33,7 +33,7 @@ public class Main {
 		//Ejercicio 3
 		////////////////////////////////////////////////////////////////
 		Archivo archivo = new Archivo();
-		archivo.setRuta("C:\\Users\\danie\\Downloads\\Resultado.txt");
+		archivo.setRuta("src/Resultado.txt");
 
 		if(archivo.existe())
 			{
