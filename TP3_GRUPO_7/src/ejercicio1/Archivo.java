@@ -126,5 +126,27 @@ public class Archivo {
 			return false;
 				
 		}
+		
+		public void escribe_lineas(TreeSet<Persona> personas) {
+			try 
+			{	
+				FileWriter entrada = new FileWriter(ruta, true);
+				BufferedWriter miBuffer = new BufferedWriter(entrada);
+				
+				for (Persona persona : personas) {
+					miBuffer.write(persona.getNombre() + " " + persona.getApellido() + " " + persona.getDni());
+					miBuffer.newLine();
+				}
+				
+				miBuffer.close();
+				entrada.close();
+				
+				System.out.println("Información escrita en el archivo correctamente.");
 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 }
+
+
